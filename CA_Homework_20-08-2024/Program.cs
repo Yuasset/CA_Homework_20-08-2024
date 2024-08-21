@@ -129,7 +129,7 @@ while (true)
                         {
                             if (item.Type == "Edebiyat")
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \n{item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \nBasım Tarihi: {item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
                             }
                         }
                         break;
@@ -140,7 +140,7 @@ while (true)
                         {
                             if (item.Type == "Araştırma")
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \n{item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \nBasım Tarihi: {item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
                             }
                         }
                         break;
@@ -151,7 +151,7 @@ while (true)
                         {
                             if (item.Type == "Felsefe")
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \n{item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \nBasım Tarihi: {item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
                             }
                         }
                         break;
