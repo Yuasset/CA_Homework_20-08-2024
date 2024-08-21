@@ -3,9 +3,8 @@ using System.Collections;
 
 int select;
 
-ArrayList books = new ArrayList();
-ArrayList electronics = new ArrayList();
-ArrayList toys = new ArrayList();
+//ArrayList karmaşık veri tiplerini birer nesne olarak tutmamızı sağlar. Verileri eklerken tip dönüşümü yapmamıza gerek kalmaz boxing denir. Fakat verileri çekerken tip dönüşümü (unboxing) yapmamız gerekmektedir.
+ArrayList product = new ArrayList();
 
 Book book1 = new Book();
 book1.Name = "Beser Hatun";
@@ -61,13 +60,6 @@ book6.PrintingYear = 2021;
 book6.PageNumber = 346;
 book6.Price = 38.60m;
 
-books.Add(book1);
-books.Add(book2);
-books.Add(book3);
-books.Add(book4);
-books.Add(book5);
-books.Add(book6);
-
 Electronic electronic1 = new Electronic();
 electronic1.Name = "Samsung Galaxy Tab A9 Plus SM-X210 Gri 64 GB 11 Tablet";
 electronic1.Type = "Tablet";
@@ -92,11 +84,18 @@ toy2.Type = "Figür";
 toy2.Brand = "Star Wars";
 toy2.Price = 2549m;
 
-electronics.Add(electronic1);
-electronics.Add(electronic2);
+product.Add(book1);
+product.Add(book2);
+product.Add(book3);
+product.Add(book4);
+product.Add(book5);
+product.Add(book6);
 
-toys.Add(toy1);
-toys.Add(toy2);
+product.Add(electronic1);
+product.Add(electronic2);
+
+product.Add(toy1);
+product.Add(toy2);
 
 while (true)
 {
@@ -125,33 +124,45 @@ while (true)
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Aşağıda edebiyat kitapları listeleniyor");
-                        foreach (Book item in books)
+                        foreach (object item in product)
                         {
-                            if (item.Type == "Edebiyat")
+                            if (item is Book) //is operatörü ile tip kontrolü yapılır item nesnesi veri tipi Book tipinde ise if bloğu çalışır
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \nBasım Tarihi: {item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Book book = (Book)item; //Unboxing
+                                if (book.Type == "Edebiyat")
+                                {
+                                    Console.WriteLine($"Adı: {book.Name} \nTürü: {book.Type} \nYayın Evi: {book.PublishingHouse} \nYazar: {book.Author} \nBasım Tarihi: {book.PrintingYear} \nSayfa Sayısı: {book.PageNumber} \nFiyat: {book.Price} TL (KDV Hariç) \nKDV: {book.PriceKDV}");
+                                }
                             }
                         }
                         break;
                     case 2:
                         Console.Clear();
                         Console.WriteLine("Aşağıda araştırma kitapları listeleniyor");
-                        foreach (Book item in books)
+                        foreach (object item in product)
                         {
-                            if (item.Type == "Araştırma")
+                            if (item is Book) //is operatörü ile tip kontrolü yapılır item nesnesi veri tipi Book tipinde ise if bloğu çalışır
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \nBasım Tarihi: {item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Book book = (Book)item; //Unboxing
+                                if (book.Type == "Araştırma")
+                                {
+                                    Console.WriteLine($"Adı: {book.Name} \nTürü: {book.Type} \nYayın Evi: {book.PublishingHouse} \nYazar: {book.Author} \nBasım Tarihi: {book.PrintingYear} \nSayfa Sayısı: {book.PageNumber} \nFiyat: {book.Price} TL (KDV Hariç) \nKDV: {book.PriceKDV}");
+                                }
                             }
                         }
                         break;
                     case 3:
                         Console.Clear();
                         Console.WriteLine("Aşağıda felsefe kitapları listeleniyor");
-                        foreach (Book item in books)
+                        foreach (object item in product)
                         {
-                            if (item.Type == "Felsefe")
+                            if (item is Book) //is operatörü ile tip kontrolü yapılır item nesnesi veri tipi Book tipinde ise if bloğu çalışır
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTürü: {item.Type} \nYayın Evi: {item.PublishingHouse} \nYazar: {item.Author} \nBasım Tarihi: {item.PrintingYear} \nSayfa Sayısı: {item.PageNumber} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Book book = (Book)item; //Unboxing
+                                if (book.Type == "Felsefe")
+                                {
+                                    Console.WriteLine($"Adı: {book.Name} \nTürü: {book.Type} \nYayın Evi: {book.PublishingHouse} \nYazar: {book.Author} \nBasım Tarihi: {book.PrintingYear} \nSayfa Sayısı: {book.PageNumber} \nFiyat: {book.Price} TL (KDV Hariç) \nKDV: {book.PriceKDV}");
+                                }
                             }
                         }
                         break;
@@ -169,22 +180,30 @@ while (true)
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Aşağıda tabletler listeleniyor");
-                        foreach (Electronic item in electronics)
+                        foreach (object item in product)
                         {
-                            if (item.Type == "Tablet")
+                            if (item is Electronic)
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTipi: {item.Type} \nMarkası: {item.Brand} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Electronic electronic = (Electronic)item;
+                                if (electronic.Type == "Tablet")
+                                {
+                                    Console.WriteLine($"Adı: {electronic.Name} \nTipi: {electronic.Type} \nMarkası: {electronic.Brand} \nFiyat: {electronic.Price} TL (KDV Hariç) \nKDV: {electronic.PriceKDV}");
+                                }
                             }
                         }
                         break;
                     case 2:
                         Console.Clear();
                         Console.WriteLine("Aşağıda bilgisayarlar listeleniyor");
-                        foreach (Electronic item in electronics)
+                        foreach (object item in product)
                         {
-                            if (item.Type == "Bilgisayar")
+                            if (item is Electronic)
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTipi: {item.Type} \nMarkası: {item.Brand} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Electronic electronic = (Electronic)item;
+                                if (electronic.Type == "Bilgisayar")
+                                {
+                                    Console.WriteLine($"Adı: {electronic.Name} \nTipi: {electronic.Type} \nMarkası: {electronic.Brand} \nFiyat: {electronic.Price} TL (KDV Hariç) \nKDV: {electronic.PriceKDV}");
+                                }
                             }
                         }
                         break;
@@ -202,22 +221,30 @@ while (true)
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Aşağıda puzzlelar listeleniyor");
-                        foreach (Toy item in toys)
+                        foreach (object item in product)
                         {
-                            if (item.Type == "Puzzle")
+                            if (item is Toy)
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTipi: {item.Type} \nMarkası: {item.Brand} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Toy toy = (Toy)item;
+                                if (toy.Type == "Puzzle")
+                                {
+                                    Console.WriteLine($"Adı: {toy.Name} \nTipi: {toy.Type} \nMarkası: {toy.Brand} \nFiyat: {toy.Price} TL (KDV Hariç) \nKDV: {toy.PriceKDV}");
+                                }
                             }
                         }
                         break;
                     case 2:
                         Console.Clear();
                         Console.WriteLine("Aşağıda figürler listeleniyor");
-                        foreach (Toy item in toys)
+                        foreach (object item in product)
                         {
-                            if (item.Type == "Figür")
+                            if (item is Toy)
                             {
-                                Console.WriteLine($"Adı: {item.Name} \nTipi: {item.Type} \nMarkası: {item.Brand} \nFiyat: {item.Price} TL (KDV Hariç) \nKDV: {item.PriceKDV}");
+                                Toy toy = (Toy)item;
+                                if (toy.Type == "Figür")
+                                {
+                                    Console.WriteLine($"Adı: {toy.Name} \nTipi: {toy.Type} \nMarkası: {toy.Brand} \nFiyat: {toy.Price} TL (KDV Hariç) \nKDV: {toy.PriceKDV}");
+                                }
                             }
                         }
                         break;
